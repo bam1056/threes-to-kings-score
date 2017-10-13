@@ -1,20 +1,73 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div class="jumbotron" style="text-align:center;width:100%;">
   <h1>
-    Welcome to {{title}}!
+    Welcome to the Threes to Kings Scoreboard
   </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
+  <h6>A Macy, Meiners, Quinlan and Whitaker Production</h6>
+  <hr>
+  <h3 *ngIf="!gameStarted" style="margin-bottom:25px;">Please Enter the Players</h3>
+  <form *ngIf="!gameStarted" #playerForm="ngForm" (ngSubmit)="onSubmit(playerForm)">
+    <div class="row" style="margin-bottom:10px;">
+      <div class="col-sm-3">
+        <label for="p1">Player 1: </label>
+        <input [(ngModel)]="ps.player1" type="text" name="player1">
+      </div>
+      <div class="col-sm-3">
+        <label for="p2">Player 2: </label>
+        <input [(ngModel)]="ps.player2" type="text" name="player2">
+      </div>
+      <div class="col-sm-3">
+        <label for="p3">Player 3: </label>
+        <input [(ngModel)]="ps.player3" type="text" name="player3">
+      </div>
+      <div class="col-sm-3">
+        <label for="p4">Player 4: </label>
+        <input [(ngModel)]="ps.player4" type="text" name="player4">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <label for="p5">Player 5: </label>
+        <input [(ngModel)]="ps.player5" type="text" name="player5">
+      </div>
+      <div class="col-sm-3">
+        <label for="p6">Player 6: </label>
+        <input [(ngModel)]="ps.player6" type="text" name="player6">
+      </div>
+      <div class="col-sm-3">
+        <label for="p7">Player 7: </label>
+        <input [(ngModel)]="ps.player7" type="text" name="player7">
+      </div>
+      <div class="col-sm-3">
+        <label for="p8">Player 8: </label>
+        <input [(ngModel)]="ps.player8" type="text" name="player8">
+      </div>
+    </div>
+    <div class="row" style="margin-top:30px;">
+      <button type="submit" class="btn btn-success">Start Game</button>
+    </div>
+  </form>
+  <div *ngIf="gameStarted" class="row" style="margin-top:30px;">
+    <button type="reset" class="btn btn-default" (click)="reset()">Restart</button>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="http://angularjs.blogspot.ca/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<div *ngIf="gameStarted">
+  <table style="text-align:center; width:100%;" class="table">
+    <thead style="text-align:center" class="thead-inverse">
+      <tr>
+        <th style="text-align:center">Card</th>
+        <th *ngFor="let player of players" style="text-align:center">{{player}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let card of cards">
+        <td>{{card.value}}</td>
+        <td *ngFor="let player of players"><input type="number"></td>
+      </tr>
+      <tr>
+        <td>TOTAL</td>
+        <td *ngFor="let player of players"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
