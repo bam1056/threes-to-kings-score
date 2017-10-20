@@ -38,8 +38,12 @@ export class AppComponent {
   }
 
   calculateTotal(player: object) {
-    console.log(player);
-    player['totalScore'] = player['score'].reduce((c, p) => c + p);
+    player['totalScore'] = player['score'].reduce((c, p) => {
+      if (p) {
+        return c + p;
+      }
+      return c;
+    });
   }
 
   reset() {
